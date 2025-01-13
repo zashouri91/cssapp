@@ -1,0 +1,68 @@
+import { RoleDefinition } from './types';
+
+export const roles: Record<string, RoleDefinition> = {
+  admin: {
+    name: 'admin',
+    description: 'Full system access',
+    permissions: [
+      'create:surveys',
+      'read:surveys',
+      'update:surveys',
+      'delete:surveys',
+      'create:groups',
+      'read:groups',
+      'update:groups',
+      'delete:groups',
+      'create:locations',
+      'read:locations',
+      'update:locations',
+      'delete:locations',
+      'create:users',
+      'read:users',
+      'update:users',
+      'delete:users',
+      'read:responses',
+      'delete:responses',
+      'read:analytics',
+      'export:analytics',
+      'schedule:reports',
+      'manage:users',
+    ],
+  },
+  manager: {
+    name: 'manager',
+    description: 'Team and survey management',
+    permissions: [
+      'create:surveys',
+      'read:surveys',
+      'update:surveys',
+      'read:groups',
+      'update:groups',
+      'read:locations',
+      'update:locations',
+      'read:users',
+      'read:responses',
+      'read:analytics',
+      'export:analytics',
+      'schedule:reports',
+    ],
+    inherits: ['employee'],
+  },
+  employee: {
+    name: 'employee',
+    description: 'Basic survey and response access',
+    permissions: [
+      'read:surveys',
+      'read:responses',
+      'read:analytics',
+    ],
+  },
+  user: {
+    name: 'user',
+    description: 'External user with minimal access',
+    permissions: [
+      'read:surveys',
+      'create:responses',
+    ],
+  },
+};
